@@ -49,7 +49,8 @@ namespace InterViewAPI.Controllers
             }
             inputTotal = inputTotal / 1000;
             input = inputTotal.ToString("N3", CultureInfo.CreateSpecificCulture("en-US"));
-                //String.Format("D", inputTotal/ 1000);
+            //String.Format("D", inputTotal/ 1000);
+            Console.WriteLine(input);
             return input;
         }
 

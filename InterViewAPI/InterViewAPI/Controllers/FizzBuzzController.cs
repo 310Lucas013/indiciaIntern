@@ -39,7 +39,7 @@ namespace InterViewAPI.Controllers
                 {
                     value = i.ToString();
                 }
-
+                Console.WriteLine(value);
                 result.Add(value);
             }
             
