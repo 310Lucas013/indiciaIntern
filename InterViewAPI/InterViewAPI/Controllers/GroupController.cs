@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using InterViewAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace InterViewAPI.Controllers
 {
@@ -39,9 +41,9 @@ namespace InterViewAPI.Controllers
 
         [HttpGet]
         [Route("json")]
-        public JsonResult Get()
+        public string Json()
         {
-            List<string> result = new List<string>();
+            List<Result> results = new List<Result>();
             var arr = RandomNumbers();
             var q = from int e in arr select e;
             List<int> numbers = q.ToList<int>();
@@ -57,8 +59,10 @@ namespace InterViewAPI.Controllers
             {
                 string line = cn[0].ToString() + ": " + cn[1].ToString() + " keer";
                 Console.WriteLine(line);
-                result.Add(line);
+                results.Add(new Result(cn[0], cn[1]));
             }
+            string result = JsonConvert.SerializeObject(results);
+            Console.WriteLine(result);
             return result;
         }
 
