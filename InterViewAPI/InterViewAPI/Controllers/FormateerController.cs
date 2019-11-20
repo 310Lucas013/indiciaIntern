@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -15,17 +16,40 @@ namespace InterViewAPI.Controllers
         [HttpGet]
         public string Get()
         {
-            string pattern = @"\p{Sc}*(\s?\d+[.,]?\d*)\p{Sc}*";
-            string replacement = "$1";
+            //List<double[]> doubles = (double[])InputValues()
+            //double SumNumbers(List<double[]> setsOfNumbers, int indexOfSetToSum)
+            //{
+            //    return setsOfNumbers?[indexOfSetToSum]?.Sum() ?? double.NaN;
+            //}
+
+            //var sum = SumNumbers(null, 0);
+
+
+            //string pattern = @"\p{Sc}*(\s?\d+[.,]?\d*)\p{Sc}*";
+            //string replacement = "$1";
+            //string input = "";
+            //foreach (object obj in InputValues())
+            //{
+            //    if (obj != null)
+            //    {
+            //        input += ojb
+            //    }
+            //}
+            //string input = InputValues().ToString();
+
             string input = "";
-            foreach (object obj in InputValues())
+            double inputTotal = 0;
+            object[] inputNumbers = InputValues();
+            foreach(object obj in inputNumbers)
             {
                 if (obj != null)
                 {
-                    input += ojb
+                    inputTotal += Convert.ToDouble(obj.ToString());
                 }
             }
-            //string input = InputValues().ToString();
+            inputTotal = inputTotal / 1000;
+            input = inputTotal.ToString("N3", CultureInfo.CreateSpecificCulture("en-US"));
+                //String.Format("D", inputTotal/ 1000);
             return input;
         }
 
