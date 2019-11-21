@@ -11,6 +11,7 @@ namespace InterViewAPI.Controllers
     [ApiController]
     public class AckermannController : ControllerBase
     {
+        // GET: ackermann/calculate?a=[int]&b=[int]
         [HttpGet]
         [Route("calculate")]
         public int Get(int a, int b)
@@ -18,24 +19,7 @@ namespace InterViewAPI.Controllers
             return Ackermanns(a, b);
         }
 
-        // POST: api/Ackermann
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Ackermann/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-
+        // Ackermann formula.
         private int Ackermanns(int a, int b)
         {
             if (a == 0)

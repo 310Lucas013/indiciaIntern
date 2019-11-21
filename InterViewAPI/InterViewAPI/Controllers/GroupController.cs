@@ -13,7 +13,7 @@ namespace InterViewAPI.Controllers
     [ApiController]
     public class GroupController : ControllerBase
     {
-        // GET: api/Group
+        // GET: Group/plain
         [HttpGet]
         [Route("plain")]
         public List<string> Get()
@@ -22,7 +22,6 @@ namespace InterViewAPI.Controllers
             var arr = RandomNumbers();
             var q = from int e in arr select e;
             List<int> numbers = q.ToList<int>();
-            //List<int> numbers = arr.SelectMany(it => it).ToList();
             List<int[]> countedNumbers = new List<int[]>();
             for (int i = 24; i >= 0; i--)
             {
@@ -39,6 +38,7 @@ namespace InterViewAPI.Controllers
             return result;
         }
 
+        // GET: Group/json
         [HttpGet]
         [Route("json")]
         public string Json()
@@ -47,7 +47,6 @@ namespace InterViewAPI.Controllers
             var arr = RandomNumbers();
             var q = from int e in arr select e;
             List<int> numbers = q.ToList<int>();
-            //List<int> numbers = arr.SelectMany(it => it).ToList();
             List<int[]> countedNumbers = new List<int[]>();
             for (int i = 24; i >= 0; i--)
             {
@@ -67,31 +66,7 @@ namespace InterViewAPI.Controllers
             return result;
         }
 
-        //// GET: api/Group/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST: api/Group
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Group/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-
+        // Supplied Code
         private static IEnumerable<int> RandomNumbers(int seed = 123)
         {
             var random = new System.Random(seed);

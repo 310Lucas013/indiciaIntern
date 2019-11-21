@@ -10,14 +10,7 @@ namespace InterViewAPI.Controllers
     [ApiController]
     public class FizzBuzzController : ControllerBase
     {
-        //// GET api/values
-        //[HttpGet]
-        //public ActionResult<IEnumerable<string>> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        // GET fizzbuzz/values/5
+        // GET: Fizzbuzz?from=[int]&to=[int]
         [HttpGet]
         public ActionResult<List<string>> Get(int from, int to)
         {
@@ -44,24 +37,6 @@ namespace InterViewAPI.Controllers
             }
             
             return result;
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
