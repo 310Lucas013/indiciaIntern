@@ -61,6 +61,7 @@ namespace InterViewAPI.Controllers
                 Console.WriteLine(line);
                 results.Add(new Result(cn[0], cn[1]));
             }
+            results = results.OrderBy(x => x.Total).ToList();
             string result = JsonConvert.SerializeObject(results);
             Console.WriteLine(result);
             return result;
